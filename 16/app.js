@@ -45,6 +45,10 @@ function init(){
         box.position.x = random(-width / 5, width / 5);
         box.position.y = random(-height / 5, height / 5);
         box.position.z = random(-width / 5, width / 5);
+
+        //速度をランダムに設定
+        box.randomSpeed = random(1, 3);
+
         
         group.add(box);
     }
@@ -86,11 +90,9 @@ function init(){
         //アニメーション処理
         for(let i = 0; i < group.children.length; i++){
             const obj = group.children[i];
-            rotateX(obj, radian(0.6 * speedOffset.x));
-            rotateY(obj, radian(0.5 * speedOffset.y));
-            //rotateX(obj, radian(0.6));
-            //rotateY(obj, radian(0.5));
-            rotateZ(obj, radian(0.8));
+            rotateX(obj, radian(0.6 * obj.randomSpeed * speedOffset.x));
+            rotateY(obj, radian(0.5 * obj.randomSpeed * speedOffset.y));
+            rotateZ(obj, radian(0.8 * obj.randomSpeed));
         }
         
         //レンダリング
